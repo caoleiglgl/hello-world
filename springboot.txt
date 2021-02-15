@@ -1,0 +1,13 @@
+一. SpringApplication 初始化
+1、 构造自身实例
+2、 推测web应用类型，并赋值到属性webApplicationType
+3、 设置属性List<ApplicationContextInitializer<?>> initializers和List<ApplicationListener<?>> listeners中途读取了类路径下所有META-INF/spring.factories的属性，并缓存到了SpringFactoriesLoader的cache缓存中
+4、 推断主类，并赋值到属性mainApplicationClass
+参考资料：https://www.cnblogs.com/youzhibing/p/9550343.html
+
+二. SpringApplication run方法（1）  
+    // 获取启动时监听器
+    SpringApplicationRunListeners listeners = getRunListeners(args)
+    // 触发启动事件，相应的监听器会被调用，这是本文重点
+    listeners.starting();
+参考资料：https://www.cnblogs.com/youzhibing/p/9603119.html
